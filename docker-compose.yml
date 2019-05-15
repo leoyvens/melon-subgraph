@@ -34,6 +34,7 @@ services:
       - ./data/ipfs:/data/ipfs
   postgres:
     image: postgres
+    network_mode: host
     ports:
       - '5432:5432'
     environment:

@@ -1,3 +1,14 @@
+type Registry @entity {
+  id: ID!
+  versions: [Version!]! @derivedFrom(field: "registry")
+}
+
+type Version @entity {
+  id: ID!
+  registry: Registry!
+  funds: [Version!]! @derivedFrom(field: "version")
+}
+
 type Asset @entity {
   id: ID!
   decimals: Int!
@@ -9,6 +20,7 @@ type Fund @entity {
   id: ID!
   name: String!
   manager: String!
+  version: Version!
   routes: Routes!
   investments: [Investment!]! @derivedFrom(field: "fund")
   creationTime: BigInt!
