@@ -62,30 +62,7 @@ function updateFundCalculations(event: PriceUpdate): void {
         return;
       }
 
-      // @JANNIS: Look here :-)
-      // 
-      // It parses this value as 115792089237316195423570985008687907853269984665640564039457584007913129639936
-      // if it turns out to be -1 actually (no fund registered yet).
-      //
-      // TODO: What the actual fuck?
-      // if (lastFundId.gt(BigInt.fromI32(99999999))) {
-      //   return;
-      // }
-
       for (let j: i32 = 0; j < lastFundId.toI32(); j++) {
-        // @JANNIS: Look here :-)
-        //
-        // On the current version, the fund #4 crashes the `getFundById()`
-        // call. It consistently crashes on fund #4. Maybe it has something
-        // to do with this merged PR from 2018?
-        // 
-        // https://github.com/graphprotocol/graph-node/pull/526
-        // 
-        // TODO: Seriously, what the fuck?!
-        // if (j === 4) {
-        //   continue;
-        // }
-
         let fundAddress = versionContract.getFundById(BigInt.fromI32(j)).toHex();
         let fund = Fund.load(fundAddress);
         if (!fund) {
