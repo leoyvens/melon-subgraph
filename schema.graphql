@@ -1,11 +1,12 @@
 type State @entity {
   id: ID!
-  lastCalculation: BigInt!
   activeFunds: BigInt!
   nonActiveFunds: BigInt!
   timestampFundCount: BigInt!
   numberOfInvestors: BigInt!
   timestamptNumberOfInvestors: BigInt!
+  lastCalculationId: BigInt!
+  lastCalculation: BigInt!
 }
 
 type Registry @entity {
